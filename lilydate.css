@@ -1,0 +1,50 @@
+#lilydate_container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  font: 12px Helvetica, sans-serif;
+  font-weight: bold;
+  padding: 5px;
+  border: 1px solid #333333;
+  border-radius: 5px;
+  background-color: #e6e6e6;
+}
+#lilydate_container h2 {
+  font-size: 12px;
+  font-weight: bold;
+  margin: 6px 0 2px 0;
+  padding: 0;
+}
+#lilydate_container .lilydate_field {
+  clear: left;
+  overflow: auto;
+}
+#lilydate_container .lilydate_button {
+  cursor: pointer;
+  float: left;
+  color: #333333;
+  background-color: #ffffff;
+  border: 1px solid #333333;
+  margin: 0 3px 3px 0;
+  padding: 5px;
+  border-radius: 5px;
+  -moz-user-select: -moz-none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+#lilydate_container .lilydate_button.ui {
+  color: #999999;
+  border-color: #999999;
+}
+#lilydate_container .lilydate_button:hover {
+  color: #ffffff;
+  background-color: #999999;
+  border-color: #333333;
+}
+#lilydate_container .lilydate_button.selected, #lilydate_container .lilydate_button.selected:hover {
+  cursor: auto;
+  color: #ffffff;
+  background-color: #333333;
+  border-color: #333333;
+}
