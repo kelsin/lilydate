@@ -2,6 +2,13 @@
 
 This is a tiny javascript jquery plugin for implementing quick date pickers.
 
+## Requirements
+
+This plugin requires [jQuery](http://jquery.com/) and
+[Date.js](http://www.datejs.com/). jQuery you'll need to get from it's website,
+but I have included a version of Date.js in this repo. Feel free to grab the
+newest version off of their website however.
+
 ## Usage
 
 Very simple. If I have a date field such as:
