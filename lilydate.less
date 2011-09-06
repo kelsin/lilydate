@@ -7,6 +7,8 @@
 @selected-color: #fff;
 @selected-bg-color: #333;
 @selected-border-color: #333;
+@container-border-color: #007fbb;
+@container-bg-color: rgba(0,0,0,0.95);
 
 #lilydate_container {
   position: absolute;
@@ -21,14 +23,15 @@
   padding: 5px;
   margin: 0 16px 16px 0;
 
-  border: 1px solid @border-color;
-  border-radius: 5px;
-  background-color: darken(@bg-color, 10%);
+  border: 3px solid @container-border-color;
+  border-radius: 12px;
+  background-color: @container-bg-color;
 
   h2 {
     font-size: 12px;
     font-weight: bold;
     margin: 6px 0 2px 0;
+    color: #fff;
     padding: 0; }
 
   .lilydate_field {
