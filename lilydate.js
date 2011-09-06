@@ -1,5 +1,5 @@
 (function($){
-    $.fn.lilydate = function() {
+    $.fn.lilydate = function(format) {
         function select(type, value) {
             $('#lilydate_' + type + ' .selected').removeClass('selected');
             $('#lilydate_' + type + '_' + value).addClass('selected');
@@ -23,7 +23,7 @@
             var date = Date.parse($input.val());
             if(date === null) {
                 date = new Date();
-                $input.val(date.toString());
+                $input.val(date.toString(format));
             }
             var original_date = date.clone();
 
@@ -177,6 +177,8 @@
             }
 
             function build_container() {
+                var doc_height = $(document).height();
+
                 $('#lilydate_container').remove();
                 $container = $('<div id="lilydate_container"></div>');
                 $container.append('<h2>Date</h2>');
@@ -193,7 +195,17 @@
                 var offset = $input.offset();
 
                 $('body').append($container);
-                $('#lilydate_container').css('top', offset.top + 'px').css('left', offset.left + 'px');
+
+                var $container = $('#lilydate_container');
+                $container.css('top', offset.top + 'px').css('left', offset.left + 'px');
+
+                var max_height = doc_height - $container.outerHeight(true);
+
+                console.log(max_height);
+                console.log($container.position().top);
+                if($container.position().top > max_height) {
+                    $container.css('top', max_height + 'px');
+                }
 
                 $('#lilydate_submit').click(function() { submit(); });
                 $('#lilydate_cancel').click(function() { cancel(); });
@@ -201,21 +213,21 @@
 
             function cancel() {
                 date = original_date.clone();
-                $input.val(date.toString());
+                $input.val(date.toString(format));
                 $('#lilydate_container').remove();
                 $input.show();
             }
 
             function submit() {
-                $input.val(date.toString());
+                $input.val(date.toString(format));
                 original_date = date.clone();
                 $('#lilydate_container').remove();
-                $input.show();
+                // $input.show();
             }
 
             $input.focus(function() {
-                $input.hide();
                 build_container();
+                // $input.hide();
             });
         });
     };
