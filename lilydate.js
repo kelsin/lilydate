@@ -27,6 +27,15 @@
             }
             var original_date = date.clone();
 
+            function select_date() {
+                select('year', date.getFullYear());
+                select('month', date.getMonth());
+                select('day', date.getDate());
+                select('hours', parseInt(date.toString('h')));
+                select('minutes', Math.floor(date.getMinutes()/15) * 15);
+                select('ampm', date.toString('tt'));
+            }
+
             function build_year(center_year) {
                 var year = date.getFullYear();
                 if(center_year === undefined) { center_year = year; }
@@ -181,6 +190,10 @@
 
                 $('#lilydate_container').remove();
                 $container = $('<div id="lilydate_container"></div>');
+                $container.append('<input type="button" id="lilydate_yesterday" value="Yesterday" />');
+                $container.append('<input type="button" id="lilydate_today" value="Today" />');
+                $container.append('<input type="button" id="lilydate_tomorrow" value="Tomorrow" />');
+                $container.append('<input type="button" id="lilydate_next_week" value="Next Week" />');
                 $container.append('<h2>Date</h2>');
                 $container.append(build_year());
                 $container.append(build_month());
@@ -209,6 +222,11 @@
 
                 $('#lilydate_submit').click(function() { submit(); });
                 $('#lilydate_cancel').click(function() { cancel(); });
+
+                $('#lilydate_yesterday').click(function() { date = Date.now().addDays(-1); select_date(); });
+                $('#lilydate_today').click(function() { date = Date.now(); select_date(); });
+                $('#lilydate_tomorrow').click(function() { date = Date.now().addDays(1); select_date(); });
+                $('#lilydate_next_week').click(function() { date = Date.now().addDays(7); select_date(); });
             }
 
             function cancel() {
