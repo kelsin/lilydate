@@ -1,5 +1,8 @@
 (function($){
     $.fn.lilydate = function(format) {
+        if(format === undefined) {
+            format = 'ddd MMM d yyyy HH:mm:ss' }
+
         function select(type, value) {
             $('#lilydate_' + type + ' .selected').removeClass('selected');
             $('#lilydate_' + type + '_' + value).addClass('selected');
@@ -214,8 +217,6 @@
 
                 var max_height = doc_height - $container.outerHeight(true);
 
-                console.log(max_height);
-                console.log($container.position().top);
                 if($container.position().top > max_height) {
                     $container.css('top', max_height + 'px');
                 }
@@ -240,6 +241,7 @@
                 $input.val(date.toString(format));
                 original_date = date.clone();
                 $('#lilydate_container').remove();
+                $input.change();
                 // $input.show();
             }
 
